@@ -1,0 +1,59 @@
+[
+  {
+    "Id": "path-match-sample",
+    "Description": "A match can be made against the path of the request.",
+    "PathMatchExpression": "/path",
+    "ResponseStatusCode": 200,
+    "ResponseBody": "{ \"field\": \"path-match-sample-value\" }"
+  },
+  {
+    "Id": "method-match-sample",
+    "Description": "A method match can be made against the http method of the request.",
+    "MethodMatchExpression": "PUT",
+    "ResponseStatusCode": 200,
+    "ResponseBody": "{ \"status\": \"method-match-sample-success\" }"
+  },
+  {
+    "Id": "header-match-sample",
+    "Description": "A header match can be made against the name and/or value.",
+    "PathMatchExpression": "/headermatch",
+    "HeaderNameMatchExpression": "match-test",
+    "HeaderValueMatchExpression": "match-value",
+    "ResponseStatusCode": 200,
+    "ResponseBody": "{ \"status\": \"header-match-sample-success\" }"
+  },
+  {
+    "Id": "json-body-match-sample",
+    "Description": "A body match can be made against the body of a request using regex.",
+    "PathMatchExpression": "/body",
+    "BodyMatchExpression": "match-test",
+    "ResponseStatusCode": 200,
+    "ResponseBody": "{ \"status\": \"json-body-match-sample-success\" }"
+  },
+  {
+    "Id": "json-content-sample",
+    "Description": "If the body contains a json doc, the value can be used in the response by using the token {Request.Body.property-name}",
+    "PathMatchExpression": "/json",
+    "ResponseStatusCode": 200,
+    "ResponseBody": "{ \"status\": \"json-content-sample-success\", \"value\": \"{Request.Body.match-test}\" }"
+  },
+  {
+    "Id": "header-content-sample",
+    "Description": "The value of a header can be used in the response by using the token {Request.Header.header-name}",
+    "PathMatchExpression": "/header$",
+    "ResponseStatusCode": 200,
+    "ResponseBody": "{ \"status\": \"header-content-sample-success\", \"value\": \"{Request.Header.Content-Type}\" }"
+  },
+  {
+    "Id": "bad-request-sample",
+    "Description": "A bad request or any other status code can be returned in a response.",
+    "PathMatchExpression": "/badrequest",
+    "ResponseStatusCode": 400,
+    "ErrorMessage": "There was an unexpected error."
+  },
+  {
+    "Id": "catch-all-sample",
+    "Description": "The catch-all sample request will match if no other templates match. Change ResponseStatusCode to a 404 if you don't want a positive response every time.",
+    "ResponseStatusCode": 200
+  }
+]
